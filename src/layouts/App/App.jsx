@@ -13,7 +13,7 @@ import ProductCreateUpdate, {
 import useAuth from "../../hooks/useAuth"
 import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"
-import { profile } from "../../api/user"
+import { profile } from "../../services/user"
 import ProductInfo, {
 	loader as productInfoLoader,
 } from "../ProductInfo/ProductInfo"

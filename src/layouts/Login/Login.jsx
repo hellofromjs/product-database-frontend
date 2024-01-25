@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { login } from "../../api/user"
+import { login } from "../../services/user"
 import { useSearchParams, useNavigate, Link } from "react-router-dom"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"
 import ServerError from "../../components/ServerError/ServerError"

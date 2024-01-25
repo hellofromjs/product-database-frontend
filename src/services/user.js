@@ -1,8 +1,8 @@
-import { formatResponse } from "../utilities/helpers"
+import { API_URL, formatResponse } from "../utilities/helpers"
 
 async function register(name, email, password, password_confirmation) {
 	try {
-		const response = await fetch('http://demo-api.ideabridge.lt/api/auth/register', {
+		const response = await fetch(`${API_URL}/auth/register`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -23,7 +23,7 @@ async function register(name, email, password, password_confirmation) {
 
 async function login(email, password) {
 	try {
-		const response = await fetch('http://demo-api.ideabridge.lt/api/auth/login', {
+		const response = await fetch(`${API_URL}/auth/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -42,7 +42,7 @@ async function login(email, password) {
 
 async function logout(access_token) {
 	try {
-		const response = await fetch('http://demo-api.ideabridge.lt/api/auth/logout', {
+		const response = await fetch(`${API_URL}/auth/logout`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -58,7 +58,7 @@ async function logout(access_token) {
 
 async function profile(access_token) {
 	try {
-		const response = await fetch('http://demo-api.ideabridge.lt/api/auth/me', {
+		const response = await fetch(`${API_URL}/auth/me`, {
 			headers: {
 				"Content-Type": "application/json",
 				"Authorization": 'Bearer ' + access_token

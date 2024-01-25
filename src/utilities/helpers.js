@@ -1,9 +1,11 @@
+export const API_URL = 'https://demo-api.ideabridge.lt/api'
+
 export async function formatResponse(response) {
-	const data = await response.json();
+	const data = await response.json()
 
 	if (response.ok) {
-		return [data.data, null];
+		return [data.data, null]
 	} else {
-		return [null, { message: data.message, errors: data.errors }];
+		return [null, { message: data.message, errors: data.errors }]
 	}
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllProducts } from "../../api/product"
+import { getAllProducts } from "../../services/product"
 import usePagination from "../../hooks/usePagination"
 import ProductShort from "../../components/ProductShort/ProductShort"
 import Pagination from "../../components/Pagination/Pagination"

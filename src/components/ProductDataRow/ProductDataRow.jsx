@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { deleteProduct } from "../../api/product"
+import { deleteProduct } from "../../services/product"
 import useAuth from "../../hooks/useAuth"
 
 export default function ProductDataRow({ data, onRefreshList }) {

@@ -1,5 +1,5 @@
 import { redirect, Link } from "react-router-dom"
-import { getUserProducts } from "../../api/product"
+import { getUserProducts } from "../../services/product"
 import ProductDataRow from "../../components/ProductDataRow/ProductDataRow"
 import Pagination from "../../components/Pagination/Pagination"
 import { useEffect, useState } from "react"

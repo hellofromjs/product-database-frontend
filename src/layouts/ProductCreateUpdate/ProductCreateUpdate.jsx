@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { createProduct, getProduct, updateProduct } from "../../api/product"
+import { createProduct, getProduct, updateProduct } from "../../services/product"
 import useAuth from "../../hooks/useAuth"
 import { redirect, useNavigate, useParams } from "react-router-dom"
 import ServerError from "../../components/ServerError/ServerError"

@@ -1,5 +1,5 @@
 import { Link, redirect, useNavigate } from "react-router-dom"
-import { logout } from "../../api/user"
+import { logout } from "../../services/user"
 import useAuth from "../../hooks/useAuth"
 import { useContext } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"

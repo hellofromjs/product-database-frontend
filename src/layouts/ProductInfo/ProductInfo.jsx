@@ -1,7 +1,7 @@
 import { redirect, useParams } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import { useEffect, useState } from "react"
-import { getProduct } from "../../api/product"
+import { getProduct } from "../../services/product"
 
 export default function ProductInfo() {
 	const [token] = useAuth()
