@@ -5,54 +5,36 @@ import {
 	createRoutesFromElements,
 } from "react-router-dom"
 
-import Home, { loader as productsLoader } from "../Home/Home"
+import Home from "../Home/Home"
 
-import ProductCreateUpdate, {
-	loader as createUpdateProductLoader,
-} from "../ProductCreateUpdate/ProductCreateUpdate"
+import ProductCreateUpdate from "../ProductCreateUpdate/ProductCreateUpdate"
 import useAuth from "../../hooks/useAuth"
 import { useContext, useEffect } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"
 import { profile } from "../../services/user"
-import ProductInfo, {
-	loader as productInfoLoader,
-} from "../ProductInfo/ProductInfo"
+import ProductInfo from "../ProductInfo/ProductInfo"
 import Index from "../Index/Index"
 import Login from "../Login/Login"
 import Register from "../Register/Register"
 import RootLayout from "../RootLayout/RootLayout"
+import PrivateRoutes from "../../utilities/PrivateRoutes"
 
-const router = ({ access_token }) =>
-	createBrowserRouter(
-		createRoutesFromElements(
-			<Route path="/" element={<RootLayout />}>
-				<Route index element={<Index />} />
-				<Route path="/login" element={<Login />} />
-				<Route path="/register" element={<Register />} />
-				<Route
-					path="/home"
-					element={<Home />}
-					loader={() => productsLoader(access_token)}
-				/>
-				<Route
-					path="/products/add"
-					element={<ProductCreateUpdate />}
-					loader={() => createUpdateProductLoader(access_token)}
-				/>
-				<Route
-					path="/products/update/:id"
-					element={<ProductCreateUpdate />}
-					loader={() => createUpdateProductLoader(access_token)}
-				/>
-				<Route
-					path="/products/read/:id"
-					element={<ProductInfo />}
-					loader={() => productInfoLoader(access_token)}
-				/>
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<Route path="/" element={<RootLayout />}>
+			<Route index element={<Index />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/register" element={<Register />} />
+			<Route element={<PrivateRoutes />}>
+				<Route path="/home" element={<Home />} />
+				<Route path="/products/add" element={<ProductCreateUpdate />} />
+				<Route path="/products/update/:id" element={<ProductCreateUpdate />} />
+				<Route path="/products/read/:id" element={<ProductInfo />} />
 			</Route>
-		),
-		{ basename: '/' + import.meta.env.VITE_REPO_NAME }
-	)
+		</Route>
+	),
+	{ basename: "/" + import.meta.env.VITE_REPO_NAME }
+)
 
 function App() {
 	const [token] = useAuth()
@@ -74,7 +56,7 @@ function App() {
 		init()
 	}, [])
 
-	return <RouterProvider router={router({ access_token: token })} />
+	return <RouterProvider router={router} />
 }
 
 export default App

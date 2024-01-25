@@ -1,4 +1,4 @@
-import { redirect, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { getUserProducts } from "../../services/product"
 import ProductDataRow from "../../components/ProductDataRow/ProductDataRow"
 import Pagination from "../../components/Pagination/Pagination"
@@ -79,14 +79,4 @@ export default function Home() {
 			)}
 		</div>
 	)
-}
-
-export async function loader(access_token) {
-	if (access_token === null) {
-		return redirect(
-			"/login?redirectTo=" + window.location.pathname.replace("/", "%2F")
-		)
-	}
-
-	return null
 }

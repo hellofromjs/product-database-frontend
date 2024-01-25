@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { login } from "../../services/user"
-import { useSearchParams, useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link, useLocation } from "react-router-dom"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"
 import ServerError from "../../components/ServerError/ServerError"
 
 export default function Login() {
 	const [formData, setFormData] = useState()
-	const [searchParams, _setSearchParams] = useSearchParams()
+	const location = useLocation()
 	const navigate = useNavigate()
 	const { user, setUserData } = useContext(GlobalContext)
 	const [serverError, setServerError] = useState(null)
@@ -28,13 +28,8 @@ export default function Login() {
 
 	useEffect(() => {
 		if (user.access_token !== null) {
-			const redirectPath = searchParams.get("redirectTo")
-
-			if (redirectPath === null) {
-				navigate("/home")
-			} else {
-				navigate(redirectPath)
-			}
+			const { from } = location.state || { from: { pathname: "/home" } }
+			navigate(from, { replace: true })
 		}
 	}, [user])
 

@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { createProduct, getProduct, updateProduct } from "../../services/product"
 import useAuth from "../../hooks/useAuth"
 import { redirect, useNavigate, useParams } from "react-router-dom"
 import ServerError from "../../components/ServerError/ServerError"
+import Toast from "../../components/Toast/Toast"
+import { ToastContext } from "../../contexts/ToastContext/ToastContext"
 
 export default function ProductCreateUpdate() {
 	const [token] = useAuth()
@@ -10,6 +12,7 @@ export default function ProductCreateUpdate() {
 	const [formData, setFormData] = useState()
 	const [serverError, setServerError] = useState(null)
 	const navigate = useNavigate()
+	const toast = useContext(ToastContext)
 
 	useEffect(() => {
 		async function init() {
@@ -36,6 +39,7 @@ export default function ProductCreateUpdate() {
 			setServerError(error)
 
 			if (error === null) {
+				toast.open(<Toast text="Product updated" variant="success" />)
 				navigate("/home")
 			}
 		} else {
@@ -49,6 +53,7 @@ export default function ProductCreateUpdate() {
 			setServerError(error)
 
 			if (error === null) {
+				toast.open(<Toast text="Product created" variant="success" />)
 				navigate("/home")
 			}
 		}
@@ -134,14 +139,4 @@ export default function ProductCreateUpdate() {
 			</form>
 		</div>
 	)
-}
-
-export async function loader(access_token) {
-	if (access_token === null) {
-		return redirect(
-			"/login?redirectTo=" + window.location.pathname.replace("/", "%2F")
-		)
-	}
-
-	return null
 }

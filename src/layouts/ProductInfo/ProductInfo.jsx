@@ -2,6 +2,7 @@ import { redirect, useParams } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import { useEffect, useState } from "react"
 import { getProduct } from "../../services/product"
+import placeholderImg from "../../assets/images/300x200.png"
 
 export default function ProductInfo() {
 	const [token] = useAuth()
@@ -21,9 +22,9 @@ export default function ProductInfo() {
 	return (
 		<>
 			{product && (
-				<div className="container px-5 flex flex-col lg:grid grid-cols-2 gap-3 p-4">
+				<div className="container mx-auto px-5 flex flex-col lg:grid grid-cols-2 gap-3 p-4">
 					<div>
-						<img src={product.image_url} className="w-full" />
+						<img src={product.image_url || placeholderImg} className="w-full" />
 					</div>
 					<div>
 						<h2 className="text-5xl mb-5">
@@ -35,14 +36,4 @@ export default function ProductInfo() {
 			)}
 		</>
 	)
-}
-
-export async function loader(access_token) {
-	if (access_token === null) {
-		return redirect(
-			"/login?redirectTo=" + window.location.pathname.replace("/", "%2F")
-		)
-	}
-
-	return null
 }

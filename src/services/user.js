@@ -11,7 +11,7 @@ async function register(name, email, password, password_confirmation) {
 				name,
 				email,
 				password,
-				password_confirmation: password_confirmation,
+				password_confirmation,
 			})
 		})
 
