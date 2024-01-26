@@ -13,7 +13,7 @@ export default function ProductPromo({ product }) {
 			<div className="flex flex-col justify-between">
 				<div>
 					<h2 className="text-5xl mb-5">
-						{product.title} (${product.price})
+						{product.title} (${parseFloat(product.price).toFixed(2)})
 					</h2>
 					<p className="text-xl">{product.description}</p>
 				</div>

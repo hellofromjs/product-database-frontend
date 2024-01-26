@@ -57,7 +57,6 @@ async function updateProduct(access_token, id, title, price, description, image)
 	formData.append("title", title);
 	formData.append("price", parseFloat(price));
 	formData.append("description", description);
-	formData.append("image", image);
 
 	// const formData = new FormData()
 	// formData.set("title", title)
