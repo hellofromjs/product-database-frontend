@@ -53,10 +53,10 @@ async function getProduct(access_token, id) {
 }
 
 async function updateProduct(access_token, id, title, price, description, image) {
-	const formData = new URLSearchParams();
-	formData.append("title", title);
-	formData.append("price", parseFloat(price));
-	formData.append("description", description);
+	const formData = new URLSearchParams()
+	formData.append("title", title)
+	formData.append("price", parseFloat(price))
+	formData.append("description", description)
 
 	// const formData = new FormData()
 	// formData.set("title", title)
@@ -106,6 +106,20 @@ async function getAllProducts(page = 1) {
 	}
 }
 
+async function getSearchedProducts(access_token, perPage, name) {
+	try {
+		const response = await fetch(`${API_URL}/products/view/search?perPage=${perPage}&search=${name}`, {
+			headers: {
+				"Authorization": 'Bearer ' + access_token
+			},
+		})
+
+		return await formatResponse(response)
+	} catch (error) {
+		console.error(error)
+	}
+}
+
 export {
 	getAllProducts,
 	getUserProducts,
@@ -113,4 +127,5 @@ export {
 	updateProduct,
 	getProduct,
 	deleteProduct,
+	getSearchedProducts,
 }

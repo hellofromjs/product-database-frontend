@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth"
 import { useContext } from "react"
 import { GlobalContext } from "../../contexts/GlobalContext/GlobalContext"
 import Dropdown from "../Dropdown/Dropdown"
+import { FaSearch } from "react-icons/fa"
 
 export default function Navbar() {
 	const [token] = useAuth()
@@ -24,28 +25,37 @@ export default function Navbar() {
 				<Link to="/" className="text-xl">
 					Product Database
 				</Link>
-				{user.access_token ? (
-					<Dropdown className="right-0" title={user.name}>
-						<li
-							className="hover:bg-gray-200 py-2 px-4"
-							onClick={() => navigate("/home")}
-						>
-							Dashboard
-						</li>
-						<li className="hover:bg-gray-200 py-2 px-4" onClick={handleLogout}>
-							Logout
-						</li>
-					</Dropdown>
-				) : (
-					<ul className="flex gap-2">
-						<li>
-							<Link to="/login">Login</Link>
-						</li>
-						<li>
-							<Link to="/register">Register</Link>
-						</li>
-					</ul>
-				)}
+
+				<div className="flex items-center gap-5">
+					<Link to="/products/search">
+						<FaSearch />
+					</Link>
+					{user.access_token ? (
+						<Dropdown className="right-0" title={user.name}>
+							<li
+								className="hover:bg-gray-200 py-2 px-4"
+								onClick={() => navigate("/home")}
+							>
+								Dashboard
+							</li>
+							<li
+								className="hover:bg-gray-200 py-2 px-4"
+								onClick={handleLogout}
+							>
+								Logout
+							</li>
+						</Dropdown>
+					) : (
+						<ul className="flex gap-2">
+							<li>
+								<Link to="/login">Login</Link>
+							</li>
+							<li>
+								<Link to="/register">Register</Link>
+							</li>
+						</ul>
+					)}
+				</div>
 			</div>
 		</nav>
 	)

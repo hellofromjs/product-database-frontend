@@ -9,7 +9,7 @@ export default function ProductShort({ data }) {
 				className="h-[200px] object-cover bg-gray-300 block"
 				src={data.image_url || placeholderImg}
 			/>
-			<div className="p-3 flex-1 flex flex-col justify-between">
+			<div className="p-3 flex-1 flex flex-col justify-between border-t-2">
 				<div>
 					<h2 className="text-xl font-bold">{data.title}</h2>
 					<div>{truncate(data.description, 100)}</div>

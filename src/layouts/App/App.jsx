@@ -18,6 +18,7 @@ import Login from "../Login/Login"
 import Register from "../Register/Register"
 import RootLayout from "../RootLayout/RootLayout"
 import PrivateRoutes from "../../utilities/PrivateRoutes"
+import ProductSearch from "../ProductSearch/ProductSearch"
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
 				<Route path="/products/add" element={<ProductCreateUpdate />} />
 				<Route path="/products/update/:id" element={<ProductCreateUpdate />} />
 				<Route path="/products/read/:id" element={<ProductInfo />} />
+				<Route path="/products/search" element={<ProductSearch />} />
 			</Route>
 		</Route>
 	),
