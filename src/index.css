@@ -24,6 +24,6 @@ body {
 	min-height: 100vh;
 }
 
-main {
+.wrapper {
 	flex: 1;
 }
