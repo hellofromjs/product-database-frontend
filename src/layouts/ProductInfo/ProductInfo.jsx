@@ -31,6 +31,11 @@ export default function ProductInfo() {
 							{product.title} (${parseFloat(product.price).toFixed(2)})
 						</h2>
 						<p className="text-xl">{product.description}</p>
+						<small>
+							<strong>
+								Created by {product.user.name} ({product.user.email})
+							</strong>
+						</small>
 					</div>
 				</div>
 			)}

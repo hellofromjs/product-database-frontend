@@ -11,7 +11,12 @@ export default function ProductShort({ data }) {
 			/>
 			<div className="p-3 flex-1 flex flex-col justify-between border-t-2">
 				<div>
-					<h2 className="text-xl font-bold">{data.title}</h2>
+					<h2 className="text-xl font-bold">
+						{data.title}{" "}
+						<small className="text-gray-500">
+							(${parseFloat(data.price).toFixed(2)})
+						</small>
+					</h2>
 					<div>{truncate(data.description, 100)}</div>
 				</div>
 				<Link
